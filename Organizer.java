@@ -16,6 +16,8 @@ public class Organizer {
             } catch (IOException e) {
                 System.out.println("Nie udało się wczytać danych: " + e.getMessage());
             }
+        } else {
+            System.out.println("Brak zapisanych podróży – zaczynasz od zera.");
         }
 
         int wybor;
@@ -48,8 +50,16 @@ public class Organizer {
                     String kraj = scanner.nextLine();
                     System.out.print("Koszt: ");
                     int koszt = Integer.parseInt(scanner.nextLine());
+                    if (koszt < 0) {
+                        System.out.println("Koszt nie może być ujemny.");
+                        break;
+                    }
                     System.out.print("Data (rrrr-mm-dd): ");
                     String data = scanner.nextLine();
+                    if (!data.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                        System.out.println("Niepoprawny format daty. Użyj rrrr-mm-dd.");
+                        break;
+                    }
                     plan.dodajPodroz(new Podroz(miejsce, kraj, koszt, data));
                     break;
 
@@ -79,6 +89,10 @@ public class Organizer {
                     String zmienianeMiejsce = scanner.nextLine();
                     System.out.print("Nowa data (rrrr-mm-dd): ");
                     String nowaData = scanner.nextLine();
+                    if (!nowaData.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                        System.out.println("Niepoprawny format daty. Użyj rrrr-mm-dd.");
+                        break;
+                    }
                     if (plan.zmienDate(zmienianeMiejsce, nowaData)) {
                         System.out.println("Zmieniono datę.");
                     } else {
@@ -91,6 +105,10 @@ public class Organizer {
                     String miejsceKoszt = scanner.nextLine();
                     System.out.print("Nowy koszt: ");
                     int nowyKoszt = Integer.parseInt(scanner.nextLine());
+                    if (nowyKoszt < 0) {
+                        System.out.println("Koszt nie może być ujemny.");
+                        break;
+                    }
                     if (plan.zmienKoszt(miejsceKoszt, nowyKoszt)) {
                         System.out.println("Zmieniono koszt.");
                     } else {
@@ -114,15 +132,15 @@ public class Organizer {
                     Podroz najdrozsza = plan.najdrozszaPodroz();
                     Podroz najtansza = plan.najtanszaPodroz();
                     if (najdrozsza != null) {
-                        System.out.println("Najdroższa podróż: " + najdrozsza);
+                        System.out.println("Najdroższa podróż : " + najdrozsza.getMiejsce());
                     } else {
-                        System.out.println("Najdroższa podróż: brak");
+                        System.out.println("Brak zapisanych podróży.");
                     }
 
                     if (najtansza != null) {
-                        System.out.println("Najtańsza podróż: " + najtansza);
+                        System.out.println("Najtańsza podróż : " + najtansza.getMiejsce());
                     } else {
-                        System.out.println("Najtańsza podróż: brak");
+                        System.out.println("Brak zapisanych podróży.");
                     }
                     break;
 
