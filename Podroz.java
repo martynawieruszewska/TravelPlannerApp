@@ -20,10 +20,12 @@ public class Podroz implements Comparable<Podroz> {
     public int getKoszt() {
         return koszt;
     }
+    public void setKoszt(int koszt) {
+        this.koszt = koszt;
+    }
     public String getData() {
         return data;
     }
-
     public void setData(String nowaData) {
         this.data = nowaData;
     }

@@ -42,6 +42,16 @@ public class PlanPodrozy {
         return false;
     }
 
+    public boolean zmienKoszt(String miejsce, int nowyKoszt) {
+    for (Podroz p : listaPodrozy) {
+        if (p.getMiejsce().equalsIgnoreCase(miejsce)) {
+            p.setKoszt(nowyKoszt);
+            return true;
+        }
+    }
+    return false;
+    }
+
     public void wyswietlPodroze() {
         if (listaPodrozy.isEmpty()) {
             System.out.println("Brak zapisanych podróży.");
@@ -51,6 +61,11 @@ public class PlanPodrozy {
                 System.out.println((i + 1) + ". " + listaPodrozy.get(i));
             }
         }
+    }
+
+    public void wyczyscPodroze() {
+    listaPodrozy.clear();
+    System.out.println("Wszystkie podróże zostały usunięte.");
     }
 
     public void posortujPoDacie() {
@@ -64,6 +79,36 @@ public class PlanPodrozy {
         }
         return suma;
     }
+
+    public double sredniKoszt() {
+    if (listaPodrozy.isEmpty()) return 0;
+    return (double) podliczKoszt() / listaPodrozy.size();
+    }
+
+    public Podroz najdrozszaPodroz() {
+    if (listaPodrozy.isEmpty()) return null;
+
+    Podroz max = listaPodrozy.get(0);
+    for (Podroz p : listaPodrozy) {
+        if (p.getKoszt() > max.getKoszt()) {
+            max = p;
+        }
+    }
+    return max;
+}
+
+    public Podroz najtanszaPodroz() {
+        if (listaPodrozy.isEmpty()) return null;
+
+        Podroz min = listaPodrozy.get(0);
+        for (Podroz p : listaPodrozy) {
+            if (p.getKoszt() < min.getKoszt()) {
+                min = p;
+            }
+        }
+        return min;
+    }
+
     
 
    public void saveToFile(File f) throws IOException {
@@ -75,6 +120,25 @@ public class PlanPodrozy {
         }
         bfw.close();
     }
+
+    public int getLiczbaPodrozy() {
+    return listaPodrozy.size();
+}
+
+public boolean zmienKoszt(String miejsce, int nowyKoszt) {
+    for (Podroz p : listaPodrozy) {
+        if (p.getMiejsce().equalsIgnoreCase(miejsce)) {
+            p.setKoszt(nowyKoszt);
+            return true;
+        }
+    }
+    return false;
+}
+
+    public void wyczyscPodroze() {
+        listaPodrozy.clear();
+        System.out.println("Wyczyszczono wszystkie podróże.");
+        }
 
     public static PlanPodrozy readFromFile(File f) throws IOException {
         // Odczyt listy podróży z pliku
