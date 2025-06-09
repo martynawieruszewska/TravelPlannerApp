@@ -109,6 +109,10 @@ public class PlanPodrozy {
         return min;
     }
 
+     public int getLiczbaPodrozy() {
+    return listaPodrozy.size();
+}
+
     
 
    public void saveToFile(File f) throws IOException {
@@ -121,24 +125,7 @@ public class PlanPodrozy {
         bfw.close();
     }
 
-    public int getLiczbaPodrozy() {
-    return listaPodrozy.size();
-}
 
-public boolean zmienKoszt(String miejsce, int nowyKoszt) {
-    for (Podroz p : listaPodrozy) {
-        if (p.getMiejsce().equalsIgnoreCase(miejsce)) {
-            p.setKoszt(nowyKoszt);
-            return true;
-        }
-    }
-    return false;
-}
-
-    public void wyczyscPodroze() {
-        listaPodrozy.clear();
-        System.out.println("Wyczyszczono wszystkie podróże.");
-        }
 
     public static PlanPodrozy readFromFile(File f) throws IOException {
         // Odczyt listy podróży z pliku
