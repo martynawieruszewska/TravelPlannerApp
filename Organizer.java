@@ -122,7 +122,8 @@ public class Organizer {
 
                 case 8:
                     plan.posortujPoDacie();
-                    System.out.println("Posortowano podróże chronologicznie.");
+                    System.out.println("Posortowano podróże chronologicznie:");
+                    plan.wyswietlPodroze();
                     break;
 
                 case 9:
