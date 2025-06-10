@@ -1,0 +1,54 @@
+Sprawozdanie z projektu: Organizer podróży Java
+1. Temat projektu
+Celem projektu było stworzenie aplikacji konsolowej w języku Java służącej do organizowania podróży. Program pozwala użytkownikowi na dodawanie, przeglądanie, usuwanie, edytowanie i zapisywanie informacji o podróżach, a także na generowanie statystyk i sortowanie danych.
+2. Struktura projektu
+Projekt składa się z trzech klas:
+Podroz – klasa reprezentująca pojedynczą podróż.
+PlanPodrozy – klasa zarządzająca listą podróży i operacjami na niej.
+Organizer – klasa główna z menu i obsługą interfejsu użytkownika (konsola).
+3. Funkcjonalności programu
+Program zawiera następujące funkcje dostępne z poziomu menu:
+Wyświetlenie wszystkich podróży.
+Dodanie nowej podróży (miejsce, kraj, koszt, data).
+Usunięcie wybranej podróży po nazwie miejsca.
+Wyczyść wszystkie podróże (po potwierdzeniu).
+Zmiana daty wybranej podróży.
+Zmiana kosztu wybranej podróży.
+Obliczenie i wyświetlenie całkowitego kosztu podróży.
+Posortowanie podróży chronologicznie i wyświetlenie listy.
+Wyświetlenie statystyk:
+liczba podróży,
+średni koszt,
+najdroższa podróż (nazwa miejsca),
+najtańsza podróż (nazwa miejsca).
+Zapisanie danych do pliku podroze.txt.
+Zakończenie działania programu.
+Dane są automatycznie wczytywane z pliku przy uruchomieniu programu, jeśli plik istnieje.
+4. Obsługa danych
+Dane są zapisywane i wczytywane z pliku tekstowego przy pomocy klas BufferedWriter i BufferedReader.
+Format jednej linii w pliku: miejsce|kraj|koszt|data.
+Klasa Podroz implementuje metodę Comparable, by umożliwić sortowanie chronologiczne według daty.
+5. Walidacja danych i logika biznesowa
+Program nie pozwala na dodanie dwóch podróży do tego samego miejsca.
+Modyfikacje (daty i kosztu) są dostępne po podaniu poprawnej nazwy miejsca.
+Przy operacjach usuwania i czyszczenia wymagane jest potwierdzenie lub weryfikacja.
+6. Testowanie
+Program został przetestowany w następujących scenariuszach:
+Dodanie wielu podróży.
+Próba dodania podróży o nazwie, która już istnieje – komunikat ostrzegawczy.
+Zmiana daty i kosztu dla różnych przypadków.
+Wczytanie i zapis do pliku – dane zachowują się poprawnie między sesjami.
+Obsługa pustej listy podróży – odpowiednie komunikaty.
+7. Zastosowane dobre praktyki programistyczne
+Rozdzielenie logiki na klasy (model, logika, interfejs użytkownika).
+Komentarze wyjaśniające kluczowe fragmenty kodu.
+Czytelna struktura menu i komunikaty dla użytkownika.
+Przemyślana kolejność funkcji w menu (od najczęściej używanych do dodatkowych).
+8. Możliwe rozszerzenia
+W przyszłości projekt można rozbudować o:
+Eksport do formatu CSV lub JSON.
+Obsługę wielu użytkowników (konta/logowanie).
+Graficzny interfejs użytkownika (np. przy użyciu JavaFX lub Swing).
+Wyszukiwanie podróży po kraju lub dacie.
+9. Wnioski
+Projekt pozwolił na utrwalenie umiejętności programowania obiektowego w Javie, zarządzania kolekcjami (ArrayList), obsługi plików oraz tworzenia prostych, ale funkcjonalnych aplikacji tekstowych. Spełniono wszystkie wymagania na ocenę bardzo dobrą (5), w tym dodano rozszerzenia wykraczające poza podstawowe wymagania (edycja danych, statystyki, sortowanie i trwałe przechowywanie danych).
